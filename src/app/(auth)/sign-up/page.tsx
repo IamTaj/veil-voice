@@ -41,7 +41,6 @@ const Page = () => {
     const checkUserName = async () => {
       if (userName) {
         setIsCheckingUserName(true)
-        setUserName('')
         try {
           const response = await axios.get(`/api/check-username-unique?username=${userName}`)
           setUserNameMessage(response.data.message)
