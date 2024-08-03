@@ -15,7 +15,7 @@ export async function SendVerificationEmail(
       //email id from where you have generated the pass key
       user: "sktajuddinali23@gmail.com",
       //pass key
-      pass: "mkga mgvo zxei heyf",
+      pass: process.env.NODEMAILER_PASSKEY,
     },
   })
   console.log("transporter: ", transporter)
