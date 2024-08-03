@@ -31,18 +31,21 @@ export async function POST(request: Request) {
       return ApiResponse(
         false,
         "Failed to update the user status to accept messages",
-        401,
+        400,
       )
     }
 
     return ApiResponse(
-      false,
+      true,
       "Message acceptance status updated successfully",
+      200,
       updatedUser,
-      401,
     )
   } catch (error: any) {
-    console.log("Failed to update the user status to accept messages")
+    console.log(
+      "Failed to update the user status to accept messages hehe",
+      error,
+    )
     return ApiResponse(
       false,
       "Failed to update the user status to accept messages",
@@ -64,19 +67,19 @@ export async function GET(request: Request) {
   const userId = user?._id
   try {
     const foundUser = await UserModel?.findById(userId)
-  
+
     if (!foundUser) {
       return ApiResponse(false, "User not found", 404)
     }
-    return ApiResponse(true, "User found", 201, {
-      isAcceptingMessage: foundUser?.isAcceptingMessage,
-    })
-  } catch (error: any) {
-    console.log("Failed to update the user status to accept messages")
     return ApiResponse(
-      false,
-      "Error in getting ",
-      500,
+      true,
+      "User found",
+      200,
+      {},
+      foundUser?.isAcceptingMessage,
     )
+  } catch (error: any) {
+    console.log("Failed to get the user status to accept messages", error)
+    return ApiResponse(false, "Error in getting user status", 500)
   }
 }
