@@ -18,7 +18,7 @@ async function dbConnect(): Promise<void> {
     
     //in case of error console db
     //change the _readyState is required to not connect to DB on every request if existing connection is there
-    connection.isConnected = db.connections[0]._readyState
+    connection.isConnected = db.connections[0].readyState
 
     console.log("MongoDB connected successfully")
   } catch (error) {
