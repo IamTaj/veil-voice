@@ -51,7 +51,7 @@ export async function POST(request: Request) {
         verifyExpiryCode: expiryDate,
         isVerified: false,
         isAcceptingMessage: true,
-        message: [],
+        userMessage: [],
       })
 
       await newUser.save()

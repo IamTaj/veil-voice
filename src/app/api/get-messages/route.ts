@@ -22,9 +22,9 @@ export async function GET(request: Request) {
   try {
     const user = await UserModel.aggregate([
       { $match: { _id: userId } },
-      { $unwind: "$message" },
-      { $sort: { "message.createdAt": -1 } },
-      { $group: { _id: "$_id", message: { $push: "$message" } } },
+      { $unwind: "$userMessage" },
+      { $sort: { "userMessage.createdAt": -1 } },
+      { $group: { _id: "$_id", userMessage: { $push: "$userMessage" } } },
     ]).exec()
 
     if (!user || user.length === 0) {
@@ -41,7 +41,7 @@ export async function GET(request: Request) {
     //     status: 200,
     //   },
     // )
-    return ApiResponse(true, user[0].message, 200)
+    return ApiResponse(true, user[0].userMessage, 200)
   } catch (error) {
     console.error("An unexpected error occurred:", error)
     // return Response.json(
