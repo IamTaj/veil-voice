@@ -15,8 +15,8 @@ import { useForm } from 'react-hook-form';
 import { AcceptMessageSchema } from '@/schemas/acceptMessageSchema';
 import { Message } from '@/types/ModelsTypes';
 import { ApiResponse } from '@/types/ApiResponseTypes';
-import MessageCard from '@/components/messageCard';
 import { ACCEPT_MESSAGES_SERVICE, GET_MESSAGES_SERVICE } from '@/app/api/apiConstant';
+import { MessageCard } from '@/components/messageCard';
 
 function UserDashboard() {
     const [messages, setMessages] = useState<Message[]>([]);
@@ -37,6 +37,7 @@ function UserDashboard() {
 
     const { register, watch, setValue } = form;
     const acceptMessages = watch('acceptMessages');
+
 
     const fetchAcceptMessages = useCallback(async () => {
         setIsSwitchLoading(true);
@@ -65,9 +66,7 @@ function UserDashboard() {
                 const response = await axios.get<ApiResponse>(GET_MESSAGES_SERVICE);
                 console.log('response: ', response);
 
-                //changes the messages to message 
-                //TODO change the message to other field
-                setMessages(response.data.message || []);
+                setMessages(response.data.userMessage || []);
                 if (refresh) {
                     toast({
                         title: 'Refreshed Messages',
@@ -129,13 +128,14 @@ function UserDashboard() {
     const { userName } = session.user as User;
 
     const baseUrl = `${window.location.protocol}//${window.location.host}`;
-    const profileUrl = `${baseUrl}/u/${userName}`;
+    const profileUrl = `${baseUrl}/veil-user/${userName}`;
 
     const copyToClipboard = () => {
-        navigator.clipboard.writeText(profileUrl);
+        navigator.clipboard.writeText(profileUrl)
         toast({
             title: 'URL Copied!',
             description: 'Profile URL has been copied to clipboard.',
+            variant: 'default'
         });
     };
 
@@ -152,7 +152,7 @@ function UserDashboard() {
                         disabled
                         className="input input-bordered w-full p-2 mr-2"
                     />
-                    <Button onClick={copyToClipboard}>Copy</Button>
+                    <Button onClick={() => copyToClipboard()}>Copy</Button>
                 </div>
             </div>
 
@@ -185,7 +185,7 @@ function UserDashboard() {
             </Button>
             <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
                 {messages.length > 0 ? (
-                    messages.map((message, index) => (
+                    messages.map((message: any, index) => (
                         <MessageCard
                             key={message._id}
                             message={message}
