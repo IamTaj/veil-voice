@@ -18,7 +18,6 @@ import { CHECK_USERNAME_UNIQUE_SERVICE, SIGNUP_SERVICE } from '@/app/api/apiCons
 
 const Page = () => {
   const [userName, setUserName] = useState<string>('')
-  console.log('userName: ', userName);
   const [userNameMessage, setUserNameMessage] = useState<string>('')
   const [isCheckingUserName, setIsCheckingUserName] = useState<boolean>(false)
   const [isSumbitting, setIsSumbitting] = useState<boolean>(false)

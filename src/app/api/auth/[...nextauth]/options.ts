@@ -16,63 +16,58 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials: any): Promise<any> {
         await dbConnect()
         try {
-          const user = await UserModel?.findOne({
+          const user = await UserModel.findOne({
             $or: [
-              { email: credentials?.identifier },
-              { userName: credentials?.identifier },
+              { email: credentials.identifier },
+              { userName: credentials.identifier },
             ],
           })
           if (!user) {
             throw new Error("No user found with this email")
           }
-
           if (!user.isVerified) {
-            throw new Error("Please verify your account before login")
+            throw new Error("Please verify your account before logging in")
           }
-
           const isPasswordCorrect = await bcrypt.compare(
             credentials.password,
             user.password,
           )
-
           if (isPasswordCorrect) {
             return user
           } else {
-            throw new Error("Incorrect Password")
+            throw new Error("Incorrect password")
           }
-        } catch (error: any) {
-          throw new Error(error)
+        } catch (err: any) {
+          throw new Error(err)
         }
       },
     }),
   ],
   callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token._id = user._id?.toString() // Convert ObjectId to string
+        token.isVerified = user.isVerified
+        token.isAcceptingMessage = user.isAcceptingMessage
+        token.userName = user.userName
+      }
+      return token
+    },
     async session({ session, token }) {
       if (token) {
         session.user._id = token._id
         session.user.isVerified = token.isVerified
-        session.user.isAcceptingMessages = token.isAcceptingMessages
+        session.user.isAcceptingMessage = token.isAcceptingMessage
         session.user.userName = token.userName
       }
       return session
     },
-    async jwt({ token, user }) {
-      if (user) {
-        token: {
-          token_id: user?._id?.toString()
-          token.isVerified = user.isVerified
-          token.isAcceptingMessages = user.isAcceptingMessages
-          token.userName = user.userName
-        }
-      }
-      return token
-    },
-  },
-  pages: {
-    signIn: "/sign-in",
   },
   session: {
     strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
+  pages: {
+    signIn: "/sign-in",
+  },
 }
