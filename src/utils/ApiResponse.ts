@@ -2,13 +2,17 @@ export function ApiResponse(
   success: boolean,
   message: string,
   status: number,
-  responseData?: {},
+  userMessage?: {},
+  isAcceptingMessage?: boolean,
+  aiGeneratedMessage?: {},
 ) {
   return Response.json(
     {
       success: success,
       message: message,
-      responseData,
+      userMessage,
+      isAcceptingMessage,
+      aiGeneratedMessage,
     },
     {
       status: status,
