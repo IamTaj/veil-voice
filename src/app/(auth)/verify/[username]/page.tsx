@@ -1,4 +1,5 @@
 "use client"
+import { VERIFY_CODE_SERVICE } from "@/app/api/apiConstant"
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
@@ -27,7 +28,7 @@ export default function VerifyAccount() {
 
     const onSubmit = async (data: VerifySchemaType) => {
         try {
-            const response = await axios.post(`/api/verify-code`, {
+            const response = await axios.post(VERIFY_CODE_SERVICE, {
                 code: data.code,
                 userName: params.username,
             })

@@ -14,6 +14,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Loader2 } from 'lucide-react'
+import { CHECK_USERNAME_UNIQUE_SERVICE, SIGNUP_SERVICE } from '@/app/api/apiConstant'
 
 const Page = () => {
   const [userName, setUserName] = useState<string>('')
@@ -42,7 +43,7 @@ const Page = () => {
       if (userName) {
         setIsCheckingUserName(true)
         try {
-          const response = await axios.get(`/api/check-username-unique?username=${userName}`)
+          const response = await axios.get(`${CHECK_USERNAME_UNIQUE_SERVICE}?username=${userName}`)
           setUserNameMessage(response.data.message)
         } catch (error) {
           const axiosError = error as AxiosError<ApiResponse>
@@ -59,7 +60,7 @@ const Page = () => {
   const onSubmit = async (data: z.infer<typeof SignUpSchema>) => {
     setIsSumbitting(true)
     try {
-      const response = await axios.post('/api/sign-up', data)
+      const response = await axios.post(SIGNUP_SERVICE, data)
       toast({
         title: "Success",
         description: response.data.message

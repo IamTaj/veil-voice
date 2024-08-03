@@ -1,4 +1,5 @@
 export interface Message extends Document {
+    _id?: any
     content: string
     createdAt: Date
 }

@@ -57,7 +57,7 @@ const SignIn = () => {
             Join Veil Voice
           </h1>
           <p className='mb-4'>
-            Sign up to start your anonymous adventure
+            Sign in to start your anonymous adventure
           </p>
         </div>
         <Form {...form}>

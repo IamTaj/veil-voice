@@ -20,12 +20,13 @@ export async function GET(request: Request) {
 
   try {
     const user = await UserModel.aggregate([
-      { $match: { id: userId } },
-      { $unwind: "$messages" },
-      { $sort: { "messages.createdAt": -1 } },
-      { $group: { _id: "$_id", messages: { $push: "$messages" } } },
+      { $match: { _id: userId } },
+      { $unwind: "$message" },
+      { $sort: { "message.createdAt": -1 } },
+      { $group: { _id: "$_id", messages: { $push: "$message" } } },
     ])
 
+    console.log("user: ", user)
     if (!user) {
       return ApiResponse(false, "No user found", 404)
     }
