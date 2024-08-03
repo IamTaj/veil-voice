@@ -21,8 +21,6 @@ export default function RootLayout({
       <AuthProvider>
         <body className={inter.className}>
           <div>
-
-            <Navbar />
             {children}
             <Toaster />
           </div>
