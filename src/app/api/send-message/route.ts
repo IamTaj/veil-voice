@@ -1,6 +1,5 @@
 import dbConnect from "@/lib/databaseConnect"
 import UserModel from "@/models/User.model"
-import { User } from "next-auth"
 import { ApiResponse } from "@/utils/ApiResponse"
 import { Message } from "@/types/ModelsTypes"
 
@@ -10,7 +9,7 @@ export async function POST(request: Request) {
   const { userName, content } = await request.json()
 
   try {
-    const user = await UserModel.findOne({ userName })
+    const user = await UserModel.findOne({ userName }).exec()
 
     if (!user) {
       return ApiResponse(false, "User not found", 404)
@@ -22,7 +21,7 @@ export async function POST(request: Request) {
 
     const newMessage = { content, createdAt: new Date() }
 
-    user.messages.push(newMessage as Message)
+    user.userMessage.push(newMessage as Message)
     await user.save()
     return ApiResponse(true, "Message sent successfully", 200)
   } catch (error) {
