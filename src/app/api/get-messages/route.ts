@@ -16,22 +16,27 @@ export async function GET(request: Request) {
   }
   const userId = new mongoose.Types.ObjectId(_user._id)
   try {
-    const user = await UserModel.aggregate([
-      { $match: { _id: userId } },
-      { $unwind: "$userMessage" },
-      { $sort: { "userMessage.createdAt": -1 } },
-      { $group: { _id: "$_id", userMessage: { $push: "$userMessage" } } },
-    ]).exec()
+    const isMessagePresent = await UserModel.findById(_user._id)
+    if (isMessagePresent?.userMessage?.length > 0) {
+      const user = await UserModel.aggregate([
+        { $match: { _id: userId } },
+        { $unwind: "$userMessage" },
+        { $sort: { "userMessage.createdAt": -1 } },
+        { $group: { _id: "$_id", userMessage: { $push: "$userMessage" } } },
+      ]).exec()
 
-    if (!user || user.length === 0) {
-      return ApiResponse(false, "User not found", 404)
+      if (!user || user.length === 0) {
+        return ApiResponse(false, "User not found", 404)
+      }
+      return ApiResponse(
+        true,
+        "User Message Fetched Successfully",
+        200,
+        user[0].userMessage,
+      )
+    } else {
+      return ApiResponse(true, "Currently you didn't received any message", 201)
     }
-    return ApiResponse(
-      true,
-      "User Message Fetched Successfully",
-      200,
-      user[0].userMessage,
-    )
   } catch (error) {
     console.error("An unexpected error occurred:", error)
 
