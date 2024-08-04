@@ -13,7 +13,7 @@ export async function SendVerificationEmail(
     secure: true,
     auth: {
       //email id from where you have generated the pass key
-      user: "sktajuddinali23@gmail.com",
+      user: "echoes.veilvoice@gmail.com",
       //pass key
       pass: process.env.NODEMAILER_PASSKEY,
     },
