@@ -6,9 +6,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { VEILVOICE_FAVICON } from "@/lib/constant";
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Veil Voice",
   description: "Veil Voice - Where your identity remains a secret.",
+  icons: {
+    icon: "/veilvoice.png",
+  }
 };
 
 export default function RootLayout({
@@ -18,9 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href={VEILVOICE_FAVICON} sizes="any" />
-      </head>
+
       <AuthProvider>
         <body className={inter.className}>
           <div>

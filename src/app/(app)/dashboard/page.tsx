@@ -128,7 +128,7 @@ function UserDashboard() {
     }
   }
 
-  if (!session || !session.user) {
+  if (!session || !session?.user) {
     return <div></div>
   }
 
@@ -147,7 +147,7 @@ function UserDashboard() {
   }
 
   return (
-    <div className="my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-[url(https://cdn.sanity.io/images/hjuptpmq/production/9529fe4275c0d97f4ec7a69bc253463d6c8cafb1-3000x2000.jpg);] rounded w-full max-w-6xl">
+    <div className="my-8 mx-0 sm:mx-0 md:mx-8 lg:mx-auto p-6 bg-[url('https://cdn.sanity.io/images/hjuptpmq/production/9529fe4275c0d97f4ec7a69bc253463d6c8cafb1-3000x2000.jpg')] rounded w-full max-w-6xl">
       <h1 className="text-4xl font-bold mb-4 gradient-text">User Dashboard</h1>
 
       <div className="mb-4">
