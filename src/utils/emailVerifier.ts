@@ -4,7 +4,7 @@ import nodemailer from "nodemailer"
 
 export async function SendVerificationEmail(
   email: string,
-  userName: string,
+  capitalizeUserName: string,
   otp: string,
 ): Promise<ApiResponse> {
   const transporter = nodemailer.createTransport({
@@ -24,8 +24,8 @@ export async function SendVerificationEmail(
     await transporter.sendMail({
       from: "",
       to: email,
-      subject: `Welcome to Veil Voice 🐾`,
-      html: VerifyEmailTemplate({ userName, otp }),
+      subject: `Welcome! Your Veil Voice Verification Code Inside 🥷`,
+      html: VerifyEmailTemplate({ capitalizeUserName, otp }),
     })
     return { success: true, message: "Verification email send successfully" }
   } catch (error: any) {

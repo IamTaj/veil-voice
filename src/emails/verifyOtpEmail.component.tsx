@@ -1,11 +1,11 @@
 import * as React from "react"
 
 interface VerifyEmailTemplate {
-  userName: string
+  capitalizeUserName: string
   otp: string
 }
 
-export const VerifyEmailTemplate = ({ userName, otp }: VerifyEmailTemplate) =>
+export const VerifyEmailTemplate = ({ capitalizeUserName, otp }: VerifyEmailTemplate) =>
   `<!DOCTYPE html>
       <html lang="en">
         <head>
@@ -46,16 +46,12 @@ export const VerifyEmailTemplate = ({ userName, otp }: VerifyEmailTemplate) =>
                 <tbody>
                   <tr style="height: 0">
                     <td>
-                      <img
-                        alt=""
-                        src="https://cdn.sanity.io/images/hjuptpmq/production/59d78481cbe6564f31def66ffad5df18495a7579-512x512.webp"
-                        height="80px"
-                      />
+                      <img width="85" height="85" src="https://img.icons8.com/external-game-ui-maxicons/85/external-assassin-avatar-classes-role-playing-game-game-ui-maxicons-2.png" alt="external-assassin-avatar-classes-role-playing-game-game-ui-maxicons-2"/>
                     </td>
                     <td style="text-align: right">
                       <span
                         style="
-                          font-size: 24px;
+                          font-size: 32px;
                           line-height: 30px;
                           color: #ffffff;
                           font-family: Times New Roman, serif;
@@ -100,7 +96,7 @@ export const VerifyEmailTemplate = ({ userName, otp }: VerifyEmailTemplate) =>
                       color: #45443F"
                     "
                   >
-                    Hey Hooman ${userName},
+                    Hey ${capitalizeUserName},
                   </p>
                   <p
                     style="
@@ -111,10 +107,10 @@ export const VerifyEmailTemplate = ({ userName, otp }: VerifyEmailTemplate) =>
                       color: #45443F"
                     "
                   >
-                  This code is valid for the next 10 minutes. 
+                  Your secret code is here, shrouded in mystery! 🥷
                   <br/>
                   <br/>
-                  Please do not share this code with anyone.
+                  Use it within the next 10 minutes to unveil your access.
                     <br />
                     If you did not request this verification, please ignore this email or contact our support team immediately.
                     <br />
@@ -132,6 +128,16 @@ export const VerifyEmailTemplate = ({ userName, otp }: VerifyEmailTemplate) =>
                   >
                     ${otp}
                   </p>
+                  <p
+                  style="
+                  margin: 0;
+                  margin-top: 32px;
+                  font-size: 19px;
+                  font-weight: 500;
+                  letter-spacing: 0.56px;
+                  color: #499fb6
+                "
+                  >Happy Veiling!</p>
 
                 </div>
               </div>
@@ -146,20 +152,13 @@ export const VerifyEmailTemplate = ({ userName, otp }: VerifyEmailTemplate) =>
                   color: #8c8c8c;
                 "
               >
-                Need some extra paw-sistance?
+              Need a voice behind the veil?
                 <br />
-                Drop us a line at
+                We've got you covered! Reach out at
                 <a
                   href="mailto:archisketch@gmail.com"
                   style="color: #499fb6; text-decoration: none"
-                  >pawspalace@gmail.com</a
-                >
-                or visit our
-                <a
-                  href=""
-                  target="_blank"
-                  style="color: #499fb6; text-decoration: none"
-                  >Help Center</a
+                  >veilvoice@gmail.com</a
                 >
               </p>
             </main>
@@ -182,11 +181,11 @@ export const VerifyEmailTemplate = ({ userName, otp }: VerifyEmailTemplate) =>
                   color: #434343;
                 "
               >
-                PAWS PALACE
+                VEIL VOICE
               </p>
-              <p style="margin: 0; margin-top: 8px; color: #434343">
+              <!-- <p style="margin: 0; margin-top: 8px; color: #434343">
                 1335, 11th Cross Rd, Stage 3, Indiranagar, Bengaluru, Karnataka 560038
-              </p>
+              </p> -->
               <div style="margin: 0; margin-top: 16px">
                 <a href="" target="_blank" style="display: inline-block">
                   <img
@@ -228,7 +227,7 @@ export const VerifyEmailTemplate = ({ userName, otp }: VerifyEmailTemplate) =>
                 /></a>
               </div>
               <p style="margin: 0; margin-top: 16px; color: #434343">
-                Copyright © 2024 Company. All rights reserved.
+                Copyright © 2024 Veil Voice. All rights reserved.
               </p>
             </footer>
           </div>
@@ -236,3 +235,4 @@ export const VerifyEmailTemplate = ({ userName, otp }: VerifyEmailTemplate) =>
       </html>
       
       `
+

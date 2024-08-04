@@ -57,10 +57,12 @@ export async function POST(request: Request) {
       await newUser.save()
     }
 
+    const capitalizeUserName =
+      userName.charAt(0).toUpperCase() + userName.slice(1, userName?.length)
     //send verification email
     const emailResponse = await SendVerificationEmail(
       email,
-      userName,
+      capitalizeUserName,
       verifyCodeOtp,
     )
 
