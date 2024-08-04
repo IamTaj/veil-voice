@@ -18,7 +18,6 @@ export async function SendVerificationEmail(
       pass: process.env.NODEMAILER_PASSKEY,
     },
   })
-  console.log("transporter: ", transporter)
 
   try {
     await transporter.sendMail({
