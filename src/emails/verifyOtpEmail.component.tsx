@@ -158,7 +158,7 @@ export const VerifyEmailTemplate = ({ capitalizeUserName, otp }: VerifyEmailTemp
                 <br />
                 We've got you covered! Reach out at
                 <a
-                  href="mailto:echoes.veilvoice@gmail.com"
+                  href="mailto:archisketch@gmail.com"
                   style="color: #499fb6; text-decoration: none"
                   >echoes.veilvoice@gmail.com</a
                 >
