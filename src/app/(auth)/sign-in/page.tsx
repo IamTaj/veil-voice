@@ -11,7 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { Loader2 } from 'lucide-react'
+import { Loader2, CrossIcon } from 'lucide-react'
 
 const SignIn = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
@@ -49,9 +49,18 @@ const SignIn = () => {
     setIsSubmitting(false)
   }
 
+  const handleHomePageNavigation = () => {
+    router.push('/')
+  }
+
   return (
     <div className='flex-grow flex flex-col items-center px-4 md:px-24 py-12 justify-center item-center min-h-screen bg-gray-100'>
-      <div className='w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md'>
+      <div className='w-full max-w-md mb-2 space-y-8 flex justify-end'>
+        <div className='rotate-45 cursor-pointer' onClick={() => handleHomePageNavigation()}>
+          <CrossIcon />
+        </div>
+      </div>
+      <div className='w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md' >
         <div className=' text-center'>
           <h1 className='text-4xl font-extrabold tracking-tight lg:text-5xl mb-6'>
             Veil Login
