@@ -73,7 +73,7 @@ export default function VerifyAccount() {
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit">Submit</Button>
+                        <Button className="w-full md:w-auto bg-customPurple hover:bg-purple-400" type="submit">Submit</Button>
                     </form>
                 </Form>
             </div>
