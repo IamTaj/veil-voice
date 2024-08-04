@@ -46,12 +46,14 @@ export const VerifyEmailTemplate = ({ capitalizeUserName, otp }: VerifyEmailTemp
                 <tbody>
                   <tr style="height: 0">
                     <td>
-                      <img height="85px" src="https://cdn.sanity.io/images/hjuptpmq/production/3c7e69bd873f69994a0a29c715711fabe39c6e47-100x100.svg" alt="external-assassin-avatar-classes-role-playing-game-game-ui-maxicons-2"/>
+                      <div style="width: 60px;">
+                        <img style="width: 100%;" src="https://img.icons8.com/external-game-ui-maxicons/85/external-assassin-avatar-classes-role-playing-game-game-ui-maxicons-2.png" alt="external-assassin-avatar-classes-role-playing-game-game-ui-maxicons-2"/>
+                      </div>
                     </td>
                     <td style="text-align: right">
                       <span
                         style="
-                          font-size: 32px;
+                          font-size: 24px;
                           line-height: 30px;
                           color: #ffffff;
                           font-family: Times New Roman, serif;
@@ -233,6 +235,4 @@ export const VerifyEmailTemplate = ({ capitalizeUserName, otp }: VerifyEmailTemp
           </div>
         </body>
       </html>
-      
       `
-
