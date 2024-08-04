@@ -50,14 +50,14 @@ const SignIn = () => {
   }
 
   return (
-    <div className='flex justify-center item-center min-h-screen bg-gray-100'>
+    <div className='flex-grow flex flex-col items-center px-4 md:px-24 py-12 justify-center item-center min-h-screen bg-gray-100'>
       <div className='w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md'>
         <div className=' text-center'>
           <h1 className='text-4xl font-extrabold tracking-tight lg:text-5xl mb-6'>
-            Join Veil Voice
+            Veil Login
           </h1>
           <p className='mb-4'>
-            Sign in to start your anonymous adventure
+            Back for More? Jump In and Log On!
           </p>
         </div>
         <Form {...form}>
@@ -88,7 +88,9 @@ const SignIn = () => {
                 </FormItem>
               )}
             />
-            <Button type='submit' disabled={isSubmitting}>
+            <Button type='submit' disabled={isSubmitting}
+              className='w-full md:w-auto bg-customPurple hover:bg-purple-400'
+            >
               {isSubmitting ? (
                 <>
                   <Loader2 className='rm-2 h-4 w-4 animate-spin' />
@@ -102,8 +104,8 @@ const SignIn = () => {
         </Form>
         <div className=' text-center mt-4'>
           <p>
-            Already a member?
-            <Link href={"/sign-in"} className=' text-blue-600 hover:text-blue-800'>Sign in</Link>
+            New to Veil Voice? Sign Up to Get Started
+            <Link href={"/sign-up"} className=' text-customPurple hover:text-purple-300'> Join</Link>
           </p>
         </div>
       </div>

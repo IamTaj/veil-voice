@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partial Text Rotation</title>
+    <style>
+        .text-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-size: 3rem; /* Adjust the font size as needed */
+            font-weight: bold;
+        }
+
+        .text {
+            display: inline;
+        }
+
+        .rotated {
+            display: inline-block;
+            opacity: 0;
+            animation: fadeIn 1s forwards, rotate 1s 0.5s forwards; /* Delays the rotation */
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(90deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="text-container">
+        <span class="text">
+            <span class="rotated">A</span>ccenture
+        </span>
+    </div>
+</body>
+</html>

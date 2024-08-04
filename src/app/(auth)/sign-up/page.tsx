@@ -80,15 +80,15 @@ const Page = () => {
   }
 
   return (
-    <div className='flex justify-center item-center min-h-screen bg-gray-100'>
+    <div className='flex-grow flex flex-col items-center px-4 md:px-24 py-12 justify-center item-center min-h-screen bg-gray-100'>
       <div className='w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md'>
         <div className=' text-center'>
           <h1 className='text-4xl font-extrabold tracking-tight lg:text-5xl mb-6'>
-            Join Veil Voice
+            Enter the Veil
 
           </h1>
           <p className='mb-4'>
-            Sign up to start your anonymous adventure
+            Sign up to start exploring the world of Veil Voice, where your privacy is our priority.
           </p>
 
         </div>
@@ -109,7 +109,7 @@ const Page = () => {
                     />
                   </FormControl>
                   {isCheckingUserName && <Loader2 className='animate-spin' />}
-                  <p className={`text-sm ${userNameMessage === "Username is unique" ? 'text-green-500' : 'text-red-500'}`}>test {userNameMessage}</p>
+                  <p className={`text-sm ${userNameMessage === "Username is unique" ? 'text-green-500' : 'text-red-500'}`}>{userNameMessage}</p>
                   <FormMessage />
                 </FormItem>
               )}
@@ -165,7 +165,9 @@ const Page = () => {
                 </FormItem>
               )}
             />
-            <Button type='submit' disabled={isSumbitting}>
+            <Button
+              className='w-full md:w-auto bg-customPurple hover:bg-purple-400'
+              type='submit' disabled={isSumbitting}>
               {isSumbitting ? (
                 <>
                   <Loader2 className='rm-2 h-4 w-4 animate-spin' />
@@ -180,8 +182,11 @@ const Page = () => {
         </Form>
         <div className=' text-center mt-4'>
           <p>
-            Already a member?
-            <Link href={"/sign-in"} className=' text-blue-600 hover:text-blue-800'>Sign in</Link>
+            Already Part of the Veil?
+            <br />
+            <Link href={"/sign-in"} className='text-customPurple hover:text-purple-300'>Log In </Link>
+            and Continue Your Secret Journey !
+
           </p>
 
         </div>

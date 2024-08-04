@@ -140,30 +140,32 @@ function UserDashboard() {
     };
 
     return (
-        <div className="my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-white rounded w-full max-w-6xl">
-            <h1 className="text-4xl font-bold mb-4">User Dashboard</h1>
+        <div className="my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-[url(https://cdn.sanity.io/images/hjuptpmq/production/9529fe4275c0d97f4ec7a69bc253463d6c8cafb1-3000x2000.jpg);] rounded w-full max-w-6xl">
+            <h1 className="text-4xl font-bold mb-4 gradient-text">User Dashboard</h1>
 
             <div className="mb-4">
-                <h2 className="text-lg font-semibold mb-2">Copy Your Unique Link</h2>{' '}
+                <h2 className="text-lg font-semibold mb-2 text-black">Copy Your Unique Link</h2>{' '}
                 <div className="flex items-center">
                     <input
                         type="text"
                         value={profileUrl}
                         disabled
-                        className="input input-bordered w-full p-2 mr-2"
+                        className="input input-bordered w-full p-2 mr-2 gradient-text"
                     />
-                    <Button onClick={() => copyToClipboard()}>Copy</Button>
+                    <Button onClick={() => copyToClipboard()} className='
+                    w-full md:w-auto bg-white text-black hover:bg-customPurple hover:text-white
+                    '>Copy</Button>
                 </div>
             </div>
 
-            <div className="mb-4">
+            <div className="mb-4 flex justify-start ">
                 <Switch
                     {...register('acceptMessages')}
                     checked={acceptMessages}
                     onCheckedChange={handleSwitchChange}
                     disabled={isSwitchLoading}
                 />
-                <span className="ml-2">
+                <span className="ml-2 gradient-text">
                     Accept Messages: {acceptMessages ? 'On' : 'Off'}
                 </span>
             </div>

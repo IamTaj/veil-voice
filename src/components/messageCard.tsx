@@ -67,7 +67,9 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
                             </AlertDialogHeader>
                             <AlertDialogFooter>
                                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <AlertDialogAction onClick={handleDeleteConfirm}>
+                                <AlertDialogAction
+                                    className="'w-full md:w-auto bg-customPurple hover:bg-purple-300'"
+                                    onClick={handleDeleteConfirm}>
                                     Continue
                                 </AlertDialogAction>
                             </AlertDialogFooter>
