@@ -2,7 +2,9 @@ export const metadata = {
   title: "Veil Voice",
   description: "Veil Voice - Where your identity remains a secret.",
   icons: {
-    icon: "/veilvoice.png",
+    icon: "/veilvoice.ico",
+    type: "image/x-icon",
+    sizes: "48x48", 
   }
 };
 
